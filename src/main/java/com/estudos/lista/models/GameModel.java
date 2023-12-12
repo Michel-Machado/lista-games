@@ -16,7 +16,7 @@ public class GameModel {
     }
 
     public GameModel(Long id, String title,Integer year, String genre, String plataform,String imgUrl,
-                String shortDescription,  String longDescription){
+                     String shortDescription,  String longDescription){
         this.id= id;
         this.title= title;
         this. year= year;
