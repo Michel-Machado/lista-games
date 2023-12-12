@@ -1,10 +1,18 @@
 package com.estudos.lista.models;
 
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+
 import java.util.Objects;
 
+@Entity
 public class GameModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @Column(name = "gameYear")
     private Integer year;
     private String genre;
     private String plataform;
