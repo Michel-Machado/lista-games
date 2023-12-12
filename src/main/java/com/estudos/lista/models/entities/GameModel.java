@@ -1,11 +1,11 @@
-package com.estudos.lista.models;
+package com.estudos.lista.models.entities;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.Objects;
 
 @Entity
+@Table(name = "tb_game")
 public class GameModel {
 
     @Id
@@ -15,21 +15,24 @@ public class GameModel {
     @Column(name = "gameYear")
     private Integer year;
     private String genre;
-    private String plataform;
+    private String platform;
+    private double score;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public GameModel(){
     }
 
-    public GameModel(Long id, String title,Integer year, String genre, String plataform,String imgUrl,
-                     String shortDescription,  String longDescription){
+    public GameModel(Long id, String title, Integer year, String genre, String platform, String imgUrl,
+                     String shortDescription, String longDescription){
         this.id= id;
         this.title= title;
         this. year= year;
         this.genre= genre;
-        this.plataform= plataform;
+        this.platform = platform;
         this.imgUrl= imgUrl;
         this.shortDescription= shortDescription;
         this.longDescription= longDescription;
@@ -68,12 +71,12 @@ public class GameModel {
         this.genre = genre;
     }
 
-    public String getPlataform() {
-        return plataform;
+    public String getPlatform() {
+        return platform;
     }
 
-    public void setPlataform(String plataform) {
-        this.plataform = plataform;
+    public void setPlatform(String plataform) {
+        this.platform = plataform;
     }
 
     public String getImgUrl() {
