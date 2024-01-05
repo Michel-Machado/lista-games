@@ -1,41 +1,25 @@
-package com.estudos.lista.models.entities;
+package com.estudos.lista.models.dto;
 
-import jakarta.persistence.*;
+import com.estudos.lista.models.entities.GameModel;
+import jakarta.persistence.Column;
+import org.springframework.beans.BeanUtils;
 
-import java.util.Objects;
-
-@Entity
-@Table(name = "tb_game")
-public class GameModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class GameCompletoDTO {
     private Long id;
     private String title;
-    @Column(name = "gameYear")
     private Integer year;
     private String genre;
     private String platform;
     private double score;
     private String imgUrl;
-    @Column(columnDefinition = "TEXT")
     private String shortDescription;
-    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
-    public GameModel(){
+    public GameCompletoDTO() {
     }
 
-    public GameModel(Long id, String title, Integer year, String genre, String platform, double score, String imgUrl, String shortDescription, String longDescription) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.genre = genre;
-        this.platform = platform;
-        this.score = score;
-        this.imgUrl = imgUrl;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
+    public GameCompletoDTO(GameModel gameModel) {
+        BeanUtils.copyProperties(gameModel,this);
     }
 
     public Long getId() {
@@ -108,18 +92,5 @@ public class GameModel {
 
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GameModel gameModel = (GameModel) o;
-        return Objects.equals(id, gameModel.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }
